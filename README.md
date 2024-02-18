@@ -1,5 +1,5 @@
 # NanoHat OLED with YouTube stats
-NanoHat OLED and GPIO Button Control for Armbian.
+Resources friendly NanoHat OLED and GPIO Button Control for Armbian.
 
 ## Thank You
 I used a lot of others people code/work.
