@@ -85,13 +85,18 @@ void *draw_screen(void *arg)
 					oled_clear_buffer();
 					get_channel_statistics(&views, &subs,
 							       &videos);
-					oled_print(" _  ____________", LINE1);
-					oled_print("\\ \\_/| |CZERWONY", LINE2);
-					oled_print(" |_| |_|  STOLIK", LINE3);
+					oled_print("Your (>)YT stats", LINE1);
 					snprintf(buffer,
 						 COMMAND_OUTPUT_BUFFER_LEN,
-						 "%3s %4s %7s",
-						 videos, subs, views);
+						 "Views: %9s", views);
+					oled_print(buffer, LINE2);
+					snprintf(buffer,
+						 COMMAND_OUTPUT_BUFFER_LEN,
+						 "Subs: %10s", subs);
+					oled_print(buffer, LINE3);
+					snprintf(buffer,
+						 COMMAND_OUTPUT_BUFFER_LEN,
+						 "Videos: %8s", videos);
 					oled_print(buffer, LINE4);
 					oled_redraw();
 					display_refresh_time =
