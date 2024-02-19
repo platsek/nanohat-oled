@@ -109,7 +109,7 @@ void *draw_screen(void *arg)
 					   ("hostname -I | awk '{printf \"IP:%13s\", $1}'"),
 					   LINE1);
 				oled_print(get_command_output
-					   ("df -h | awk '$NF==\"/\" {printf \"Card:    %2d/%2dGB\", $3, $2}'"),
+					   ("df -h | awk '$NF==\"/\" {printf \"/:       %2d/%2dGB\", $3, $2}'"),
 					   LINE2);
 				oled_print(get_command_output
 					   ("free -m | awk 'NR==2 {printf \"RAM:   %3s/%3sMB\", $3, $2}'"),
@@ -118,7 +118,7 @@ void *draw_screen(void *arg)
 					   ("cat /sys/class/thermal/thermal_zone0/temp | awk '{printf \"%15.1fc\", $1/1000}'"),
 					   LINE4);
 				oled_print(get_command_output
-					   ("top -bn1 | grep load | awk '{printf \"Load: %4.2f/\", $(NF-2)}'"),
+					   ("iostat -c | awk '/[[:digit:]]$/{printf \"Load: %3d%%/\", 100-$NF}'"),
 					   LINE4);
 				oled_redraw();
 				display_refresh_time = current_time + 2;
